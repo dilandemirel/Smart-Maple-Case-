@@ -1,24 +1,16 @@
-# Web-Scrape Case Study
+Connecting to PostgreSQL and Creating Tables with Docker Compose:
+I successfully connected to the PostgreSQL database using the Docker Compose file. Then, I created the necessary fields and tables in the database. This allowed me to set up a proper structure to store the data in an organized manner.
 
-## Overview
-Develop a scraper to extract all campground locations across the United States from The Dyrt https://thedyrt.com/search by leveraging their map interface which exposes latitude/longitude data through API requests when the mouse moves. You're free to use any library you want (requests, httpx, selenium, playwright)
-For questions please connect us via email at info@smart-maple.com
+Scraping All Campground Data and Storing it in the Database:
+I scraped data for all campgrounds across the United States from The Dyrt's map interface. I used the latitude and longitude data that appeared as the mouse moved on the map, and stored each campground’s data in the PostgreSQL database.
 
-**Hint:** Look for a search endpoint in the network tab!
+Data Validation Using Pydantic:
+I validated the data using pydantic for model validation. I checked the required fields from src/models/campground.py to ensure that the data matched the required structure, and only valid data was stored in the database.
 
-## Core Requirements
-- We provided a Docker compose file, you need to connect to PostgreSQL, create the necessary fields/tables (15p)
-- Scrape all campground data from the US map interface and store it in the database (30p)
-- Validate the data with pydantic, you can check the necessary fields from src/models/campground.py (these fields are the required fields to store in the db) (15p)
-- Scheduling: Cron-like scheduling for regular updates (15p)
-- Update: update existing records if they exist. (10p)
-- Error handling: handle errors in your code, especially HTTP errors, aand add retries if necessary (15p)
+Updating Existing Records:
+I detected and updated any existing records in the database. This way, instead of adding new data every time, I ensured that the database was consistently updated with changes to existing records.
 
-## Bonus
-- Database: Use an ORM for PostgreSQL operations
-- Logging: Comprehensive logging system
-- API Endpoint: Flask/FastAPI endpoint to trigger/control scraper 
-  (Hint: you can implement this in an async fashion)
-- Performance: Multithreading/async implementation
-- Find address from lat/long field
-- Feel free to use your creativity every additional field is appreciated
+Error Handling and Retry Mechanism:
+I implemented a comprehensive error handling strategy for HTTP errors and other potential issues. Additionally, I added a retry mechanism to ensure that the scraping process continued smoothly without interruption, even when errors occurred.
+
+
